@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0c0e17;
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Ambient Background Glow */
+.glow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(244, 114, 182, 0.15) 0%, rgba(192, 132, 252, 0.08) 50%, transparent 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* Floating Balloons & Hearts Container */
+.floating-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.item {
+    position: absolute;
+    bottom: -100px;
+    font-size: 2rem;
+    animation: floatUp 8s infinite ease-in-out;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.85;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Main Interactive Card */
+.card {
+    position: relative;
+    z-index: 10;
+    background: rgba(22, 27, 46, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(244, 114, 182, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(244, 114, 182, 0.12);
+    border-radius: 24px;
+    padding: 40px 32px;
+    max-width: 460px;
+    width: 90%;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.emoji-header {
+    font-size: 3.5rem;
+    margin-bottom: 12px;
+    display: inline-block;
+    animation: pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+h1 {
+    font-family: 'Fredoka', sans-serif;
+    color: #f472b6;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.message-box {
+    background: rgba(12, 14, 23, 0.65);
+    border: 1px solid rgba(192, 132, 252, 0.2);
+    border-radius: 18px;
+    padding: 22px 20px;
+    margin-bottom: 28px;
+}
+
+.message-box p {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+.btn {
+    background: linear-gradient(135deg, #f472b6 0%, #c084fc 100%);
+    color: #0c0e17;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(244, 114, 182, 0.35);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(244, 114, 182, 0.55);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.hidden-msg {
+    display: none;
+    margin-top: 22px;
+    font-size: 1.1rem;
+    color: #6ee7b7;
+    font-weight: 600;
+    animation: popIn 0.5s ease-out forwards;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+}
